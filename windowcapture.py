@@ -4,11 +4,12 @@ import win32ui
 import win32con
 import numpy as np
 import cv2
-
+from time import time
+from visionfilter import *
 
 
 class WindowCapture:
-    # properties
+    # propiedades
     w = 0
     h = 0
     hwnd = None
@@ -92,12 +93,5 @@ class WindowCapture:
         return pos[0] + self.offset_x, pos[1] + self.offset_y
 
 
-if __name__ == '__main__':
-    windlist = WindowCapture('Musa-Chan - Dofus 2.63.7.8')
-    img = windlist.get_screenshot()
-    print(img.shape)
-    cv2.imshow('img', img)
-    cv2.waitKey(200000)
-    cv2.destroyAllWindows()
-    # cv2.imwrite('test.png', img)
+
     
