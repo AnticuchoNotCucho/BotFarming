@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from hsvfilter import HsvFilter
+import time
 
 class Vision:
     # propeiedades de imagen a buscar
@@ -44,6 +45,10 @@ class Vision:
             rectangles.append(rect)
             rectangles.append(rect)
         rectangles, weights = cv2.groupRectangles(rectangles, groupThreshold=1, eps=0.5)
+
+        if len(rectangles) > max_result:
+            print('Warning: too many results, raise the threshold.')
+            rectangles = rectangles[:max_result]
 
         return rectangles
 
